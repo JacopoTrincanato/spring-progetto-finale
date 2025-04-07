@@ -2,13 +2,16 @@ package org.lessons.java.spring_cars.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
@@ -28,6 +31,10 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "producer_house_id", nullable = false)
     private CarProducerHouse producerHouse;
+
+    @ManyToMany
+    @JoinTable(name = "car_optionals", joinColumns = @JoinColumn(name = "car_id"), inverseJoinColumns = @JoinColumn(name = "optional_id"))
+    private List<Optionals> optionals;
 
     @Size(min = 5, max = 100, message = "car model field cannot be shorter than 5 chars and longer than 100")
     @NotBlank(message = "car model field cannot be blank, empty or null")
@@ -69,6 +76,14 @@ public class Car {
 
     public void setProducerHouse(CarProducerHouse producerHouse) {
         this.producerHouse = producerHouse;
+    }
+
+    public List<Optionals> getOptionals() {
+        return this.optionals;
+    }
+
+    public void setOptionals(List<Optionals> optionals) {
+        this.optionals = optionals;
     }
 
     public String getModel() {
