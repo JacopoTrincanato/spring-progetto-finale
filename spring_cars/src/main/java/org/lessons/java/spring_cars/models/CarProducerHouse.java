@@ -12,7 +12,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "producer_house")
+@Table(name = "producer_houses")
 public class CarProducerHouse {
 
     // variabili d'istanza
@@ -20,7 +20,7 @@ public class CarProducerHouse {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "producer_house")
+    @OneToMany(mappedBy = "producerHouse")
     private List<Car> cars;
 
     @Size(min = 5, max = 250, message = "producer house name field cannot be shorter than 5 chars and longer than 250")
