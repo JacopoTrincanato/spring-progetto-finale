@@ -27,6 +27,10 @@ public class Car {
     @NotBlank(message = "car model field cannot be blank, empty or null")
     private String model;
 
+    @Lob
+    @NotBlank(message = "url image field cannot be blank, empty or null")
+    private String urlImage;
+
     @NotNull(message = "production date field cannot be null")
     private LocalDate productionDate;
 
@@ -59,6 +63,14 @@ public class Car {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public String getUrlImage() {
+        return this.urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
     public LocalDate getProductionDate() {
