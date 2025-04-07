@@ -1,13 +1,13 @@
-package org.lessons.java.spring_fumetteria;
+package org.lessons.java.spring_cars;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringFumetteriaApplication {
+public class SpringCarsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringFumetteriaApplication.class, args);
+		SpringApplication.run(SpringCarsApplication.class, args);
 	}
 
 }
