@@ -7,7 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -22,6 +24,10 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "producer_house_id", nullable = false)
+    private CarProducerHouse producerHouse;
 
     @Size(min = 5, max = 100, message = "car model field cannot be shorter than 5 chars and longer than 100")
     @NotBlank(message = "car model field cannot be blank, empty or null")
@@ -55,6 +61,14 @@ public class Car {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public CarProducerHouse getProducerHouse() {
+        return this.producerHouse;
+    }
+
+    public void setProducerHouse(CarProducerHouse producerHouse) {
+        this.producerHouse = producerHouse;
     }
 
     public String getModel() {
