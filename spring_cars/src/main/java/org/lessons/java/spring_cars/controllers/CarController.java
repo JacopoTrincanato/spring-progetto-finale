@@ -114,7 +114,7 @@ public class CarController {
         // prendo tutti gli optional della macchina
         Car car = carService.getCarById(id);
 
-        // cancello la car
+        // cancello la macchina
         carService.deleteCar(car);
 
         return "redirect:/cars";
