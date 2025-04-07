@@ -15,7 +15,7 @@ public class CarProducerHouseService {
     private CarProducerHouseRepository carProducerHouseRepository;
 
     // metodo per trovare tutte le case produttrici
-    public List<CarProducerHouse> findCarProducers() {
+    public List<CarProducerHouse> findCarProducerHouse() {
         return carProducerHouseRepository.findAll();
     }
 
