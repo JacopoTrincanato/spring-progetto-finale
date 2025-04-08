@@ -70,7 +70,7 @@
 
                         <div class="mb-3">
                             <label for="numberOfDoors">Number of doors</label>
-                            <input type="number" id="numberOfDoors" step="1" class="form-control"
+                            <input type="number" id="numberOfDoors" step="1" min="2" max="5" class="form-control"
                                 th:field="*{numberOfDoors}" th:errorClass="is-invalid">
                             <div class="invalid-feedback" th:if="${#fields.hasErrors('numberOfDoors')}">
                                 <ul class="list-unstyled">
