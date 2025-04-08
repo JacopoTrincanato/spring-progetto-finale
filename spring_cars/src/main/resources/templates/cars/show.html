@@ -51,7 +51,12 @@
             <img th:src=*{urlImage} class="w-50">
             <div class="car-informations-top">
                 <h3 class="mb-3">Description: [[*{description}]]</h3>
-                <h3>Optionals:</h3>
+                <div th:unless="${car.getOptionals().size() > 0}">
+                    <div class="alert alert-warning">
+                        <h3>This car hasn't got optionals</h3>
+                    </div>
+                </div>
+                <h3 th:if="${car.getOptionals().size() > 0}">Optionals:</h3>
                 <h3 th:each="optional : *{optionals}">[[${optional.name}]]</h3>
             </div>
 

@@ -7,7 +7,7 @@
     <title>Create</title>
 </head>
 
-<body th:object="${car}">
+<body>
     <div class="container">
         <div class="row" th:object="${optional}">
             <div class="col-10 m-auto">
@@ -17,7 +17,7 @@
                 <div class="row justify-content-center">
 
                     <!--Inserisco il form-->
-                    <form th:action="${edit} ? @{'/optionals/edit/' +  ${optional.id}} : @{/optionals/create}"
+                    <form th:action="${edit} ? @{'/optionals/edit/' + ${optional.id}} : @{/optionals/create}"
                         method="post" class="border border-black rounded p-4">
 
                         <!--Creo i vari input-->

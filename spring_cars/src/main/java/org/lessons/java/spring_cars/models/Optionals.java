@@ -2,6 +2,8 @@ package org.lessons.java.spring_cars.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,6 +31,8 @@ public class Optionals {
     private String description;
 
     @ManyToMany(mappedBy = "optionals")
+    // prevengo il loop quando testo la chiamata api
+    @JsonIgnore
     private List<Car> cars;
 
     // metodi
