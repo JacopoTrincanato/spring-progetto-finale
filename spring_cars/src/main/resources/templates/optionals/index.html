@@ -15,29 +15,33 @@
     <main class="p-3">
         <div class="container text-center mt-3">
             <h1>Cars Optionals</h1>
-            <a th:href="@{/optionals/create/}" class="btn btn-primary">create</a>
+            <a th:href="@{/optionals/create}" class="btn btn-primary">create</a>
         </div>
 
         <section class="optionals container mt-4">
             <div class="col-12 p-4 m-auto">
 
                 <table class="table">
-                    <thead>
+                    <thead class="table-dark">
                         <tr>
                             <th>Name</th>
+                            <th>Description</th>
+                            <th>Edit button</th>
+                            <th>Delete button</th>
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr th:each="optional : *{optionals}">
+                    <tbody th:each="optional : *{optionals}">
+                        <tr>
 
-                            <td>[[*{name}]]</td>
-                            <td><a th:href="@{'/optionals/edit/' + *{id}}" class="btn btn-success">Edit optional</a>
+                            <td>[[${optional.name}]]</td>
+                            <td>[[${optional.description}]]</td>
+                            <td><a th:href="@{'/optionals/edit/' + *{id}}" class="btn btn-success">Edit</a>
                             </td>
                             <td><!-- Bottone che triggera la modale -->
                                 <button type="button" class="btn btn-danger px-4" data-bs-toggle="modal"
                                     th:data-bs-target="'#modal-' + *{id}">
-                                    X
+                                    Delete
                                 </button>
 
                                 <!-- Modale -->
@@ -48,18 +52,18 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5" th:id="'modalLabel-' + *{id}">
-                                                    Delete car [[*{model}]]
+                                                    Delete optional [[${optional.name}]]
                                                 </h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to delete the car: [[*{model}]]?
+                                                Are you sure you want to delete the optional: [[${optional.name}]]?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <form th:action="@{/pizze/delete/{id}(id=*{id})}" method="post">
+                                                <form th:action="@{/optionals/delete/{id}(id=*{id})}" method="post">
                                                     <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </div>
@@ -67,6 +71,7 @@
                                     </div>
                                 </div>
                             </td>
+
                         </tr>
                     </tbody>
                 </table>
