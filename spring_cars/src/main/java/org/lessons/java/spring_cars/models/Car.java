@@ -12,7 +12,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -28,10 +27,6 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "producer_house_id", nullable = false)
-    private CarProducerHouse producerHouse;
 
     @ManyToMany
     @JoinTable(name = "car_optionals", joinColumns = @JoinColumn(name = "car_id"), inverseJoinColumns = @JoinColumn(name = "optional_id"))
@@ -70,14 +65,6 @@ public class Car {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public CarProducerHouse getProducerHouse() {
-        return this.producerHouse;
-    }
-
-    public void setProducerHouse(CarProducerHouse producerHouse) {
-        this.producerHouse = producerHouse;
     }
 
     public List<Optionals> getOptionals() {

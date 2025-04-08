@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.lessons.java.spring_cars.models.Car;
-import org.lessons.java.spring_cars.models.CarProducerHouse;
-import org.lessons.java.spring_cars.repositories.CarProducerHouseRepository;
 import org.lessons.java.spring_cars.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +13,6 @@ public class CarService {
 
     @Autowired
     private CarRepository carRepository;
-
-    @Autowired
-    private CarProducerHouseRepository carProducerHouseRepository;
 
     // metodo per trovare tutte le macchine
     public List<Car> findCars() {
@@ -48,11 +43,6 @@ public class CarService {
     // metodo per cancellare la macchina
     public void deleteCar(Car car) {
 
-        CarProducerHouse producerHouseToDelete = car.getProducerHouse();
-
-        // cancello la casa di produzione
-        carProducerHouseRepository.delete(producerHouseToDelete);
-
         // cancello la macchina
         carRepository.delete(car);
     }
@@ -61,11 +51,6 @@ public class CarService {
     public void deleteCarById(Integer id) {
 
         Car car = getCarById(id);
-
-        CarProducerHouse producerHouseToDelete = car.getProducerHouse();
-
-        // cancello la casa di produzione
-        carProducerHouseRepository.delete(producerHouseToDelete);
 
         // cancello la macchina
         carRepository.delete(car);
