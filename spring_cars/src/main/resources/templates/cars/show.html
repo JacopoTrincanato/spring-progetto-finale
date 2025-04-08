@@ -3,7 +3,7 @@
 
 <head>
     <div th:replace="~{fragments/fragments :: headTags}"></div>
-    <title>Cars</title>
+    <title>Car Details</title>
 </head>
 
 <body>
@@ -12,23 +12,90 @@
         <nav th:replace="~{fragments/fragments :: navbar('cars')}"></nav>
     </header>
 
-    <main th:each="car : ${cars}" th:object="${car}">
-        <div class="container text-center mt-5">
+    <main th:object="${car}">
+        <div class="container d-flex mt-5 justify-content-between">
             <h1>Detalis of [[*{model}]]</h1>
+            <!-- Bottone che triggera la modale -->
+            <button type="button" class="btn btn-danger px-4" data-bs-toggle="modal"
+                th:data-bs-target="'#modal-' + *{id}">
+                X
+            </button>
+
+            <!-- Modale -->
+            <div class="modal fade" th:id="'modal-' + *{id}" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="modalLabel-[[*{id}]]" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" th:id="'modalLabel-' + *{id}">
+                                Delete car [[*{model}]]
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete the car: [[*{model}]]?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <form th:action="@{/pizze/delete/{id}(id=*{id})}" method="post">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="container m-auto mt-3 p-4 d-flex gap-3">
+        <section class="container m-auto mt-3 p-4 d-flex gap-3 bg-white">
 
             <img th:src=*{urlImage} class="w-50">
-            <div class="informations">
-                <h2 class="mb-3">Model: [[*{model}]]</h2>
-                <h2 class="mb-3">Description: [[*{description}]]</h2>
-                <h2 class="mb-3">Price: [[*{price}]] euro</h2>
+            <div class="car-informations-top">
+                <h3 class="mb-3">Description: [[*{description}]]</h3>
+                <h3>Optionals:</h3>
             </div>
 
-        </div>
+        </section>
 
-        <a th:href="@{'/cars/edit' + *{id}}" class="btn btn-success">Edit</a>
+        <section class="car-informations container m-auto p-4 gap-3 bg-white">
+            <div class="row d-flex justify-content-around border border-lighter rounded p-2">
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <p>Model:</p>
+                        <h3 class="mb-3">[[*{model}]]</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <p>Price:</p>
+                        <h3 class="mb-3">[[*{price}]] &euro;</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <p>Number of doors:</p>
+                        <h3 class="mb-3">[[*{numberOfDoors}]]</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <p>Production date:</p>
+                        <h3 class="mb-3">[[*{productionDate}]]</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <p>Fuel Type:</p>
+                        <h3 class="mb-3">[[*{fuelType}]]</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <a th:href="@{'/cars/edit' + *{id}}" class="btn btn-success">Edit car</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
 
     </main>
 

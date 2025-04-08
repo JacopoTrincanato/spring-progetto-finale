@@ -49,6 +49,7 @@ public class Car {
     private String fuelType;
 
     @NotNull(message = "number of doors field cannot be null")
+    @Size(min = 2, max = 5, message = "number of doors field cannot be less than 2 and major than five")
     private Integer numberOfDoors;
 
     @NotNull(message = "price field cannot be null")
