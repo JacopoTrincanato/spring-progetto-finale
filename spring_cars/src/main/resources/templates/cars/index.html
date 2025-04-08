@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <div th:replace="~{fragments/fragments :: headTags}"></div>
     <title>Cars</title>
 </head>
 
@@ -19,14 +19,14 @@
         </div>
 
         <div class="container mt-4">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="car-card" th:each="car : ${cars}" th:object="${car}">
+            <div class="row g-4 d-flex justify-content-between">
+                <div class="col-md-4" th:each="car : ${cars}" th:object="${car}">
+                    <div class="car-card">
                         <img th:src="*{urlImage}" class="card-img-top">
-                        <div class="card-body">
+                        <div class="card-body p-3">
                             <h5 class="card-title">[[*{model}]]</h5>
                             <p class="card-text">[[*{fuelType}]]</p>
-                            <a th:href="@{'cars' + *{id}}" class="btn btn-car">Details</a>
+                            <a th:href="@{'/cars/' + *{id}}" class="btn btn-car">Details</a>
                         </div>
                     </div>
                 </div>

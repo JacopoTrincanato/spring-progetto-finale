@@ -24,17 +24,23 @@ body {
 
 .car-card {
     border: none;
-    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    transition: transform 0.5s;
+    border-radius: 12px;
+    position: relative;
+}
+
+.card-img-top {
+    border-radius: 12px 12px 0 0;
+    width: 100%;
 }
 
 .car-card:hover {
-    transform: scale(1);
+    transform: scale(1.03);
 }
 
 .btn-car {
-    background-color: #ff3c38;
+    background-color: #ff8438;
     color: white;
 }
 
