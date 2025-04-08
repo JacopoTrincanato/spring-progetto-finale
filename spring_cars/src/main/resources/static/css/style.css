@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.navbar {
+    background-color: #212529;
+}
+
+.navbar .nav-link,
+.navbar-brand {
+    color: white;
+}
+
+.navbar .nav-link:hover {
+    color: #ff3c38;
+}
+
+.car-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.car-card:hover {
+    transform: scale(1);
+}
+
+.btn-car {
+    background-color: #ff3c38;
+    color: white;
+}
+
+.btn-car:hover {
+    background-color: #d9322f;
+}

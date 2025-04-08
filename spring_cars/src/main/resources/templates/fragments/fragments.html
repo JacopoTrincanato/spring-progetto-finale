@@ -17,9 +17,12 @@
     <!--frammento per la navbar-->
     <nav class="navbar navbar-expand-lg" th:fragment="navbar(current)">
         <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/cars}">Cars</a>
+            <a class="navbar-brand" th:href="@{/cars}">TJ Cars</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/cars}">Cars</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/optionals}">Optionals</a>
                     </li>
