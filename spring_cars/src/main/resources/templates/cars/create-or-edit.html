@@ -17,7 +17,7 @@
                 <div class="row justify-content-center">
 
                     <!--Inserisco il form-->
-                    <form th:action="${edit} ? @{'/cars/edit/' + ${car.id}} : @{/cars/create}" method="post"
+                    <form th:action="${edit} ? @{'/cars/edit/' +  ${car.id}} : @{/cars/create}" method="post"
                         class="border border-black rounded p-4">
 
                         <!--Creo i vari input-->

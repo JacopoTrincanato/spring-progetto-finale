@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -20,9 +21,12 @@ public class Optionals {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(min = 5, max = 250, message = "producer house name field cannot be shorter than 5 chars and longer than 250")
+    @Size(min = 5, max = 50, message = "producer house name field cannot be shorter than 5 chars and longer than 250")
     @NotBlank(message = "producer house name field cannot be blank, empty or null")
     private String name;
+
+    @Lob
+    private String description;
 
     @ManyToMany(mappedBy = "optionals")
     private List<Car> cars;
@@ -50,6 +54,14 @@ public class Optionals {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

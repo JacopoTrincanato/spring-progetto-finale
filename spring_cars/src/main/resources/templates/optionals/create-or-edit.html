@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--Inserisco il fragment per i tag dell'head-->
+    <div th:replace="~{fragments/fragments :: headTags}"></div>
+    <title>Create</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" th:object="${optional}">
+            <div class="col-10 m-auto">
+                <h1 th:if="${edit}" class="text-center p-4">Update the optional [[*{name}]]</h1>
+
+                <h1 th:unless="${edit}" class="text-center p-4">Crete a new optional</h1>
+                <div class="row justify-content-center">
+
+                    <!--Inserisco il form-->
+                    <form th:action="${edit} ? @{'/optionals/edit/' +  ${optional.id}} : @{/optionals/create}"
+                        method="post" class="border border-black rounded p-4">
+
+                        <!--Creo i vari input-->
+                        <div class="mb-3">
+                            <label for="name">Name</label>
+                            <input type="text" placeholder="Insert optional name" minlength="5" maxlength="50" id="name"
+                                class="form-control" th:field="*{name}" th:errorClass="is-invalid">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
+                                <ul class="list-unstyled">
+                                    <li th:each="error : ${#fields.errors('name')}" th:text="${error}"></li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description">Description</label>
+                            <input type="text" placeholder="Insert optional description" id="description"
+                                class="form-control" th:field="*{description}" th:errorClass="is-invalid">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">
+                                <ul class="list-unstyled">
+                                    <li th:each="error : ${#fields.errors('description')}" th:text="${error}"></li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-3 d-flex justify-content-between">
+                            <button type="submit" class="btn btn-dark" th:if="${edit}">Update</button>
+
+                            <button type="submit" class="btn btn-dark" th:unless="${edit}">Crete</button>
+
+                            <button type="reset" class="btn btn-light">Reset</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

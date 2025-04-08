@@ -9,12 +9,11 @@
 <body>
 
     <header>
-
         <nav th:replace="~{fragments/fragments :: navbar('cars')}"></nav>
     </header>
 
-    <main>
-        <div class="container text-center mt-5">
+    <main class="p-3">
+        <div class="container text-center mt-3">
             <h1>Our Cars</h1>
         </div>
 
@@ -25,7 +24,7 @@
                         <img th:src="*{urlImage}" class="card-img-top">
                         <div class="card-body p-3">
                             <h5 class="card-title">[[*{model}]]</h5>
-                            <p class="card-text">[[*{fuelType}]]</p>
+                            <p class="card-text">[[*{description}]]</p>
                             <a th:href="@{'/cars/' + *{id}}" class="btn btn-car">Details</a>
                         </div>
                     </div>

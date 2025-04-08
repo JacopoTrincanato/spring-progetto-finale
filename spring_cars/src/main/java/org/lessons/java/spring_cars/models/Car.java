@@ -13,6 +13,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -49,7 +50,8 @@ public class Car {
     private String fuelType;
 
     @NotNull(message = "number of doors field cannot be null")
-    @Size(min = 2, max = 5, message = "number of doors field cannot be less than 2 and major than five")
+    @Min(value = 2, message = "number of doors field cannot be less than 2")
+    @Max(value = 5, message = "number of doors field cannot be greater than 5")
     private Integer numberOfDoors;
 
     @NotNull(message = "price field cannot be null")
