@@ -1,7 +1,25 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { data, Link } from "react-router-dom";
+import GlobalContext from "../contexts/GlobalContext";
 
 export default function Cars() {
 
+    //costante per i dati delle car
+    const [cars, setCars] = useState([]);
+
+    //richiamo l'url 
+    const { apiUrl } = useContext(GlobalContext);
+
+    //fetch dei dati
+    function fetchData(url = apiUrl) {
+        fetch(url)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                const carsData = res.data;
+                setCars(carsData);
+            })
+    }
 
     return (
         <>
