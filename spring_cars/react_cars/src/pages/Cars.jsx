@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import GlobalContext from "../contexts/GlobalContext";
-import Modal from "../components/Modal";
 import CarCard from "../components/CarCard";
 import axios from "axios";
 
@@ -16,7 +15,7 @@ export default function Cars() {
     function fetchData(url = apiUrl) {
         axios.get(url)
             .then(res => {
-                console.log(res);
+                console.log(res.data);
                 const carsData = res.data;
                 setCars(carsData);
             })
@@ -24,6 +23,8 @@ export default function Cars() {
 
     //faccio la chiamata solo al caricamento del componente
     useEffect(fetchData, []);
+
+    console.log(cars);
 
     return (
         <>
@@ -34,11 +35,13 @@ export default function Cars() {
 
             <div className="container mt-4">
                 <div className="row g-4 d-flex justify-content-between">
-                    <div className="col-sm-6 col-md-4">
-                        {cars.map(car => <CarCard key={car.id} car={car} />)}
+                    <div className="row g-4 d-flex justify-content-between">
+                        {cars && cars.map(car => (
+                            <div className="col-sm-6 col-md-4" key={car.id}>
+                                <CarCard car={car} />
+                            </div>
+                        ))}
                     </div>
-
-
                 </div>
             </div>
 
