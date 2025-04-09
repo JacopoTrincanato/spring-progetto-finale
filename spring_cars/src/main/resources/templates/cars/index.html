@@ -19,7 +19,7 @@
 
         <div class="container mt-4">
             <div class="row g-4 d-flex justify-content-between">
-                <div class="col-md-4" th:each="car : ${cars}" th:object="${car}">
+                <div class="col-sm-6 col-md-4" th:each="car : ${cars}" th:object="${car}">
                     <div class="car-card">
                         <img th:src="*{urlImage}" class="card-img-top">
                         <div class="card-body p-3">
@@ -27,8 +27,42 @@
                             <p class="card-text">[[*{description}]]</p>
                             <a th:href="@{'/cars/' + *{id}}" class="btn btn-car">Details</a>
                         </div>
+                        <button type="button" class="btn delete-btn" data-bs-toggle="modal"
+                            th:data-bs-target="'#modal-' + *{id}">
+                            &#10005;
+                        </button>
                     </div>
                 </div>
+
+                <div class="btn-modals" th:each="car : ${cars}" th:object="${car}">
+                    <!-- Modale -->
+                    <div class="modal fade" th:id="'modal-' + *{id}" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="modalLabel-[[*{id}]]" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" th:id="'modalLabel-' + *{id}">
+                                        Delete car [[*{model}]]
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete the car: [[*{model}]]?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <form th:action="@{/cars/delete/{id}(id=*{id})}" method="post">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <div th:replace="~{fragments/fragments :: scripts}"></div>

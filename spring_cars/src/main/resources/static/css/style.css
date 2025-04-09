@@ -18,7 +18,8 @@ body {
     color: white;
 }
 
-.navbar .nav-link:hover {
+.navbar .nav-link:hover,
+.navbar .navbar-brand:hover {
     color: #ff3c38;
 }
 
@@ -47,4 +48,11 @@ body {
 
 .btn-car:hover {
     background-color: #d9322f;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #f8f9fa;
 }
