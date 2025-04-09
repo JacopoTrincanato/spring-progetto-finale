@@ -45,11 +45,11 @@ public class Car {
     @PastOrPresent(message = "production date field cannot be set in the future")
     private LocalDate productionDate;
 
-    @Size(min = 5, max = 20, message = "fuel type field cannot be shorter than 3 chars and longer than 20")
+    @Size(min = 5, max = 20, message = "fuel type field cannot be shorter than 5 chars and longer than 20")
     @NotBlank(message = "fuel type field cannot be blank, empty or null")
     private String fuelType;
 
-    @Size(min = 5, max = 20, message = "color field cannot be shorter than 3 chars and longer than 20")
+    @Size(min = 1, max = 20, message = "color field cannot be shorter than 1 chars and longer than 20")
     @NotBlank(message = "color field cannot be blank, empty or null")
     private String color;
 
