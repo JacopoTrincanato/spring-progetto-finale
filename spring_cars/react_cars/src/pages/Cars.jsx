@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { data, Link } from "react-router-dom";
 import GlobalContext from "../contexts/GlobalContext";
 import Modal from "../components/Modal";
+import CarCard from "../components/CarCard";
 
 export default function Cars() {
 
@@ -35,25 +35,13 @@ export default function Cars() {
             <div className="container mt-4">
                 <div className="row g-4 d-flex justify-content-between">
                     <div className="col-sm-6 col-md-4">
-                        <div className="car-card">
-                            {/*<img src={urlImage} className="card-img-top" />*/}
-                            <div className="card-body p-3">
-                                <h5 className="card-title">b</h5>
-                                <p className="card-text">bb</p>
-                                <Link className="btn btn-car">Details</Link>
-                                {/*to={`/${id}`}</div>*/}
-                            </div>
-                            <button type="button" className="btn delete-btn" data-bs-toggle="modal"
-                                data-bs-target={`#modal-{}`}>
-                                &#10005;
-                            </button>
-                        </div>
+                        {cars.map(car => <CarCard key={car.id} car={car} />)}
                     </div>
 
                     <div className="btn-modals">
 
                         {/*Modale*/}
-                        <Modal />
+                        <Modal url={apiUrl} />
                     </div>
                 </div>
             </div>
