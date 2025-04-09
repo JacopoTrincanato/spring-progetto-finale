@@ -39,9 +39,8 @@ export default function Cars() {
                     </div>
 
                     <div className="btn-modals">
-
                         {/*Modale*/}
-                        <Modal url={apiUrl} />
+                        {cars.map(car => <Modal key={car.id} car={car} url={apiUrl} setCars={setCars} />)}
                     </div>
                 </div>
             </div>
