@@ -49,6 +49,10 @@ public class Car {
     @NotBlank(message = "fuel type field cannot be blank, empty or null")
     private String fuelType;
 
+    @Size(min = 5, max = 20, message = "color field cannot be shorter than 3 chars and longer than 20")
+    @NotBlank(message = "color field cannot be blank, empty or null")
+    private String color;
+
     @NotNull(message = "number of doors field cannot be null")
     @Min(value = 2, message = "number of doors field cannot be less than 2")
     @Max(value = 5, message = "number of doors field cannot be greater than 5")
@@ -108,6 +112,14 @@ public class Car {
 
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
+    }
+
+    public String getColor() {
+        return this.color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public Integer getNumberOfDoors() {

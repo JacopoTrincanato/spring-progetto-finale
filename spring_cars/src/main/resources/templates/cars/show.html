@@ -29,6 +29,7 @@
                 </div>
                 <h3 th:if="${car.getOptionals().size() > 0}">Optionals:</h3>
                 <h3 th:each="optional : *{optionals}">[[${optional.name}]]</h3>
+                <a th:href="@{'/cars/edit/' + *{id}}" class="btn btn-success">Edit car</a>
             </div>
 
         </section>
@@ -67,7 +68,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="text-center">
-                        <a th:href="@{'/cars/edit/' + *{id}}" class="btn btn-success">Edit car</a>
+                        <p>Color:</p>
+                        <h3 class="mb-3">[[*{color}]]</h3>
                     </div>
                 </div>
             </div>

@@ -23,6 +23,7 @@ public class SecurityConfig {
         httpSecurity.authorizeHttpRequests().requestMatchers("/cars/create", "/cars/edit/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/cars/**").hasAuthority("ADMIN")
                 .requestMatchers("/optionals", "/optionals/**").hasAuthority("ADMIN")
+                .requestMatchers("/cars", "/cars/**").hasAuthority("ADMIN")
                 .requestMatchers("/**")
                 .permitAll().and().formLogin().defaultSuccessUrl("/cars", true).and().logout().and()
                 .exceptionHandling();
