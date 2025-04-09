@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import GlobalContext from './contexts/GlobalContext'
 import DefaultLayout from './layout/DefaultLayout';
+import Cars from './pages/Cars';
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route element={<DefaultLayout />}>
-              <Route path='/' />
+              <Route path='/' element={<Cars />} />
               <Route path='/optionals' />
             </Route>
           </Routes>

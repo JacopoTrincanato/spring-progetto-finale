@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { data, Link } from "react-router-dom";
 import GlobalContext from "../contexts/GlobalContext";
 
@@ -21,6 +21,9 @@ export default function Cars() {
             })
     }
 
+    //faccio la chiamata solo al caricamento del componente
+    useEffect(fetchData, []);
+
     return (
         <>
 
@@ -32,14 +35,15 @@ export default function Cars() {
                 <div className="row g-4 d-flex justify-content-between">
                     <div className="col-sm-6 col-md-4">
                         <div className="car-card">
-                            <img src={urlImage} className="card-img-top" />
+                            {/*<img src={urlImage} className="card-img-top" />*/}
                             <div className="card-body p-3">
-                                <h5 className="card-title">{model}</h5>
-                                <p className="card-text">{description}</p>
-                                <Link className="btn btn-car" to={`/${id}`}>Details</Link>
+                                <h5 className="card-title">b</h5>
+                                <p className="card-text">bb</p>
+                                <Link className="btn btn-car">Details</Link>
+                                {/*to={`/${id}`}</div>*/}
                             </div>
                             <button type="button" className="btn delete-btn" data-bs-toggle="modal"
-                                data-bs-target="'#modal-' + *{id}">
+                                data-bs-target={`#modal-{}`}>
                                 &#10005;
                             </button>
                         </div>
@@ -48,19 +52,19 @@ export default function Cars() {
                     <div className="btn-modals">
 
                         {/*Modale*/}
-                        <div className="modal fade" id={`modal-${id}`} data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby={`modalLabel-${id}`} aria-hidden="true">
+                        <div className="modal fade" id={`modal-{}`} data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabIndex="-1" aria-labelledby={`modalLabel-{}`} aria-hidden="true">
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h1 className="modal-title fs-5" id={`modalLabel-${id}`}>
-                                            Delete car {model}
+                                        <h1 className="modal-title fs-5" id={`modalLabel-{}`}>
+                                            Delete car
                                         </h1>
                                         <button type="button" className="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
-                                        Are you sure you want to delete the car: {model}
+                                        Are you sure you want to delete the car:
                                     </div>
                                     <div className="modal-footer">
                                         <button type="button" className="btn btn-secondary"
