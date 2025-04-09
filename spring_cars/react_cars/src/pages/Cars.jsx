@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import GlobalContext from "../contexts/GlobalContext";
 import Modal from "../components/Modal";
 import CarCard from "../components/CarCard";
+import axios from "axios";
 
 export default function Cars() {
 
@@ -13,8 +14,7 @@ export default function Cars() {
 
     //fetch dei dati
     function fetchData(url = apiUrl) {
-        fetch(url)
-            .then(res => res.json())
+        axios.get(url)
             .then(res => {
                 console.log(res);
                 const carsData = res.data;
@@ -38,10 +38,7 @@ export default function Cars() {
                         {cars.map(car => <CarCard key={car.id} car={car} />)}
                     </div>
 
-                    <div className="btn-modals">
-                        {/*Modale*/}
-                        {cars.map(car => <Modal key={car.id} car={car} url={apiUrl} setCars={setCars} />)}
-                    </div>
+
                 </div>
             </div>
 

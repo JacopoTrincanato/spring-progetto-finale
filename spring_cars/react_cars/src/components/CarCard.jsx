@@ -10,10 +10,6 @@ export default function CarCard({ car }) {
                     <p className="card-text">{car.description}</p>
                     <Link className="btn btn-car" to={`/${car.id}`}>Details</Link>
                 </div>
-                <button type="button" className="btn delete-btn" data-bs-toggle="modal"
-                    data-bs-target={`#modal-${car.id}`}>
-                    &#10005;
-                </button>
             </div>
         </>
     )
