@@ -13,7 +13,7 @@
             <div class="col-10 m-auto">
                 <h1 th:if="${edit}" class="text-center p-4">Update the car [[*{model}]]</h1>
 
-                <h1 th:unless="${edit}" class="text-center p-4">Crete a new car</h1>
+                <h1 th:unless="${edit}" class="text-center p-4">Create a new car</h1>
                 <div class="row justify-content-center">
 
                     <!--Inserisco il form-->
@@ -126,7 +126,7 @@
                         <div class="mb-3 d-flex justify-content-between">
                             <button type="submit" class="btn btn-dark" th:if="${edit}">Update</button>
 
-                            <button type="submit" class="btn btn-dark" th:unless="${edit}">Crete</button>
+                            <button type="submit" class="btn btn-dark" th:unless="${edit}">Create</button>
 
                             <button type="reset" class="btn btn-light">Reset</button>
                         </div>
