@@ -145,4 +145,9 @@ public class Car {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s ", this.model);
+    }
 }
